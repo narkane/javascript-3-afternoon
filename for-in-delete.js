@@ -17,7 +17,7 @@
 //   three: ' the',
 //   four: ' property',
 //   five: ' values.'
-// } 
+// }
 
 // for(var key in values) {
 //   console.log(values[key])
@@ -31,19 +31,20 @@
 //   console.log(key)
 // }
 
-
-
 ////////// PROBLEM 1 //////////
 
 /*
   Inside the function showValues, write a for in loop that concatenates each of the property values and returns the concatenated string.
 */
 
-function showValues( obj ) {
+function showValues(obj) {
   //Code Here
+  var cat = "";
+  for (prop in obj) {
+    cat += obj[prop];
+  }
+  return cat;
 }
-
-
 
 ////////// PROBLEM 2 //////////
 
@@ -54,9 +55,12 @@ function showValues( obj ) {
 */
 
 //Code Here
-
-
-
+function greaterThan10(obj) {
+  for (prop in obj) {
+    if (obj[prop] > 10) obj[prop] = 0;
+  }
+  return obj;
+}
 ////////// PROBLEM 3 //////////
 
 /*
@@ -66,9 +70,12 @@ function showValues( obj ) {
 */
 
 //Code Here
-
-
-
+function double(obj) {
+  for (val in obj) {
+    obj[val] *= 2;
+  }
+  return obj;
+}
 ////////// PROBLEM 4 //////////
 
 /*
@@ -80,9 +87,13 @@ function showValues( obj ) {
 */
 
 //Code Here
-
-
-
+function secrets(obj) {
+  var mtString = "";
+  for (id in obj) {
+    if (id.startsWith("sh")) mtString += obj[id];
+  }
+  return mtString;
+}
 /* 
   Sometimes it's needed to delete object properties. 
   All you need is the word delete before a reference to the object property value. 
@@ -101,8 +112,6 @@ function showValues( obj ) {
 
 // console.log(deleteAllThethings)
 
-
-
 ////////// PROBLEM 5 //////////
 
 /*
@@ -111,9 +120,10 @@ function showValues( obj ) {
 */
 
 //Code Here
-
-
-
+function removePassword(obj) {
+  delete obj.password;
+  return obj;
+}
 ////////// PROBLEM 6 //////////
 
 // Do not edit the code below.
@@ -122,7 +132,7 @@ var deleteTheBigNumbers = {
   second: 20,
   third: 110,
   fourth: 200
-}
+};
 // Do not edit the code above.
 
 /*
@@ -130,9 +140,9 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
-
-
-
+for (id in deleteTheBigNumbers) {
+  if (deleteTheBigNumbers[id] > 100) delete deleteTheBigNumbers[id];
+}
 ////////// PROBLEM 7 //////////
 
 /*
@@ -143,9 +153,12 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
-
-
-
+function startsWithK(obj) {
+  for (prop in obj) {
+    if (prop.startsWith("k")) delete obj[prop];
+  }
+  return obj;
+}
 ////////// PROBLEM 8 //////////
 
 /*
@@ -158,5 +171,9 @@ var deleteTheBigNumbers = {
 */
 
 //Code Here
-
-
+function hiddenTreasure(obj) {
+  for (prop in obj) {
+    if (!prop.includes("treasure")) delete obj[prop];
+  }
+  return obj;
+}
