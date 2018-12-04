@@ -173,7 +173,9 @@ function startsWithK(obj) {
 //Code Here
 function hiddenTreasure(obj) {
   for (prop in obj) {
-    if (!prop.includes("treasure")) delete obj[prop];
+    if (!obj[prop].includes("treasure")) {
+      delete obj[prop];
+    }
   }
   return obj;
 }
